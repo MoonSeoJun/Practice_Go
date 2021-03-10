@@ -5,15 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/MoonSeoJun/FreeWebMaking/models"
 	"github.com/gorilla/mux"
 )
-
-// User for json marshaling
-type User struct {
-	Name   string `json:"name"`
-	Age    int    `json:"age"`
-	Gender string `json:"gender"`
-}
 
 func main() {
 	r := mux.NewRouter()
@@ -26,7 +20,7 @@ func main() {
 
 // JSONMarshal is marshaling struct
 func JSONMarshal(w http.ResponseWriter, r *http.Request) {
-	u := User{}
+	u := models.User{}
 
 	if err := json.NewDecoder(r.Body).Decode(&u); err != nil {
 		panic(err)
