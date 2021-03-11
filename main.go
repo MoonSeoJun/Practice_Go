@@ -4,12 +4,14 @@ import (
 	"net/http"
 
 	"github.com/MoonSeoJun/FreeWebMaking/controllers"
+	"github.com/MoonSeoJun/FreeWebMaking/models"
 	"github.com/gorilla/mux"
 )
 
 func main() {
 	r := mux.NewRouter()
 
+	models.ConnectDB()
 	Apis(r)
 	RunServer(":8080", r)
 }
