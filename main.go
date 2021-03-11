@@ -24,5 +24,7 @@ func RunServer(port string, r *mux.Router) {
 // Apis - collected apis
 func Apis(r *mux.Router) {
 
-	r.HandleFunc("/method", controllers.JSONMarshal).Methods("POST")
+	r.HandleFunc("/create", controllers.CreateUser).Methods("POST")
+	r.HandleFunc("/getUser/{id}", controllers.GetUser).Methods("GET")
+	r.HandleFunc("/getAll", controllers.GetAllUser).Methods("GET")
 }
