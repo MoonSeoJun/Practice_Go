@@ -69,3 +69,19 @@ func GetAllUser(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(userJSON)
 }
+
+// DeleteUser - delete user info
+func DeleteUser(w http.ResponseWriter, r *http.Request) {
+	var user models.User
+
+	param := mux.Vars(r)
+	id := param["id"]
+
+	if err := models.DB.Where("id = ?", id).First(&user).Error; err != nil {
+		panic(err)
+	}
+
+	models.DB.Delete(&user)
+
+	w.WriteHeader(http.StatusOK)
+}

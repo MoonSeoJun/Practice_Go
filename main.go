@@ -26,5 +26,6 @@ func Apis(r *mux.Router) {
 
 	r.HandleFunc("/create", controllers.CreateUser).Methods("POST")
 	r.HandleFunc("/getUser/{id}", controllers.GetUser).Methods("GET")
-	r.HandleFunc("/getAll", controllers.GetAllUser).Methods("GET")
+	r.HandleFunc("/getAllUsers", controllers.GetAllUser).Methods("GET")
+	r.HandleFunc("/deleteUser/{id}", controllers.DeleteUser).Methods("DELETE")
 }
